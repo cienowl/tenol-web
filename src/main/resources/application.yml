@@ -1,0 +1,9 @@
+spring:
+  profiles:
+    active: local
+  mvc:
+    static-path-pattern: /static/**
+  devtools:
+    livereload:
+      enabled: true
+
