@@ -40,3 +40,16 @@ dependencies {
 test {
     useJUnitPlatform()
 }
+
+def querydslSrcDir = 'src/main/generated'
+sourceSets {
+    main.java.srcDirs = ['src/main/java', querydslSrcDir]
+}
+
+tasks.withType(JavaCompile) {
+    options.annotationProcessorGeneratedSourcesDirectory(file(querydslSrcDir))
+}
+
+clean.doLast {
+    file(querydslSrcDir).deleteDir()
+}
