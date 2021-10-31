@@ -1,8 +1,15 @@
+server:
+  port: 8081
+  servlet:
+    context-path: /tenol
+
 spring:
   profiles:
     active: local
   mvc:
     static-path-pattern: /static/**
+    throw-exception-if-no-handler-found: true
+    dispatch-options-request: false
   devtools:
     livereload:
       enabled: true
