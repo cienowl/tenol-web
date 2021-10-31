@@ -5,7 +5,7 @@ plugins {
 }
 
 group = 'club.tennis'
-version = '0.0.1-SNAPSHOT'
+version = '0.0.1'
 sourceCompatibility = '11'
 
 configurations {
@@ -19,22 +19,40 @@ repositories {
 }
 
 dependencies {
+//    Spring Boot dependencies
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
     implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
     implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation 'org.springframework.boot:spring-boot-starter-actuator'
-    implementation 'org.springdoc:springdoc-openapi-ui:1.5.11'
+    developmentOnly 'org.springframework.boot:spring-boot-devtools'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
+//    springDoc
+    implementation 'org.springdoc:springdoc-openapi-ui:1.5.10'
+
+//    Database
+    runtimeOnly 'org.mariadb.jdbc:mariadb-java-client:2.7.3'
+
+//    Lombok
+    compileOnly 'org.projectlombok:lombok:1.18.22'
+    annotationProcessor 'org.projectlombok:lombok:1.18.22'
+
+//    MapStruct
+    implementation 'org.mapstruct:mapstruct:1.4.2.Final'
+    compileOnly 'org.projectlombok:lombok-mapstruct-binding:0.2.0'
+    annotationProcessor 'org.mapstruct:mapstruct-processor:1.4.2.Final'
+
+//    querydsl dependencies
     implementation 'com.querydsl:querydsl-jpa:5.0.0'
     implementation 'com.querydsl:querydsl-apt:5.0.0'
     implementation 'com.querydsl:querydsl-core:5.0.0'
-    implementation 'org.mapstruct:mapstruct:1.4.2.Final'
-    compileOnly 'org.projectlombok:lombok'
-    compileOnly 'org.projectlombok:lombok-mapstruct-binding:0.2.0'
-    developmentOnly 'org.springframework.boot:spring-boot-devtools'
-    runtimeOnly 'org.mariadb.jdbc:mariadb-java-client'
-    annotationProcessor 'org.projectlombok:lombok'
-    annotationProcessor 'org.mapstruct:mapstruct-processor:1.4.2.Final'
-    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+//    annotationProcessor 'com.querydsl:querydsl-jpa:5.0.0'
+//    annotationProcessor 'com.querydsl:querydsl-core:5.0.0'
+
+//    querydsl JPAAnnotationProcessor
+    annotationProcessor 'com.querydsl:querydsl-apt:5.0.0:jpa'
+    annotationProcessor 'jakarta.persistence:jakarta.persistence-api:2.2.3'
+    annotationProcessor 'jakarta.annotation:jakarta.annotation-api:1.3.5'
 }
 
 test {
