@@ -1,5 +1,5 @@
 plugins {
-    id 'org.springframework.boot' version '2.6.0'
+    id 'org.springframework.boot' version '2.5.7'
     id 'io.spring.dependency-management' version '1.0.11.RELEASE'
     id 'java'
 }
@@ -31,7 +31,7 @@ dependencies {
     implementation 'org.springdoc:springdoc-openapi-ui:1.5.12'
 
 //    Database
-    runtimeOnly 'org.mariadb.jdbc:mariadb-java-client:2.7.3'
+    runtimeOnly 'org.mariadb.jdbc:mariadb-java-client:2.7.4'
 
 //    Lombok
     compileOnly 'org.projectlombok:lombok:1.18.22'
@@ -42,15 +42,11 @@ dependencies {
     compileOnly 'org.projectlombok:lombok-mapstruct-binding:0.2.0'
     annotationProcessor 'org.mapstruct:mapstruct-processor:1.4.2.Final'
 
-//    querydsl dependencies
-    implementation 'com.querydsl:querydsl-jpa:5.0.0'
-    implementation 'com.querydsl:querydsl-apt:5.0.0'
-    implementation 'com.querydsl:querydsl-core:5.0.0'
-//    annotationProcessor 'com.querydsl:querydsl-jpa:5.0.0'
-//    annotationProcessor 'com.querydsl:querydsl-core:5.0.0'
+//    Querydsl dependencies
+    implementation 'com.querydsl:querydsl-jpa:4.4.0'
+    annotationProcessor 'com.querydsl:querydsl-apt:4.4.0:jpa'
 
 //    querydsl JPAAnnotationProcessor
-    annotationProcessor 'com.querydsl:querydsl-apt:5.0.0:jpa'
     annotationProcessor 'jakarta.persistence:jakarta.persistence-api:2.2.3'
     annotationProcessor 'jakarta.annotation:jakarta.annotation-api:1.3.5'
 }
@@ -69,5 +65,5 @@ tasks.withType(JavaCompile) {
 }
 
 clean.doLast {
-    file(querydslSrcDir).deleteDir()
+    file(querydslSrcDir).delete()
 }
