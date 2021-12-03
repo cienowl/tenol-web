@@ -42,7 +42,6 @@ public class DataSourceConfiguration {
         targetDataSource.put(DatabaseEnvironment.WRITER, masterDataSource());
         targetDataSource.put(DatabaseEnvironment.READONLY, slaveDataSource());
         dataSourceMasterSlaveRouting.setTargetDataSources(targetDataSource);
-
         dataSourceMasterSlaveRouting.setDefaultTargetDataSource(masterDataSource());
         return dataSourceMasterSlaveRouting;
     }
