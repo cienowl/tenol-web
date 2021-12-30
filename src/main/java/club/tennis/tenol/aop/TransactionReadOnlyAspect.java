@@ -17,7 +17,7 @@ import org.springframework.transaction.annotation.Transactional;
 public class TransactionReadOnlyAspect {
     @Around("@annotation(transactional)")
     public Object proceed(ProceedingJoinPoint proceedingJoinPoint, Transactional transactional) throws Throwable {
-        log.info("-== Aspect executed ==-");
+        log.info("-== Database Context Aspect Executed ==-");
         try {
             if (transactional.readOnly()) {
                 DatabaseContextHolder.set(DatabaseEnvironment.READONLY);
