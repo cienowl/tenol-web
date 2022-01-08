@@ -28,7 +28,7 @@ dependencies {
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
 
 //    springDoc
-    implementation 'org.springdoc:springdoc-openapi-ui:1.6.2'
+    implementation 'org.springdoc:springdoc-openapi-ui:1.6.3'
 
 //    Database
     runtimeOnly 'org.mariadb.jdbc:mariadb-java-client:2.7.4'
