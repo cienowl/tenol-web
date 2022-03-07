@@ -19,6 +19,7 @@ public class Guest extends BaseEntity {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long guestSeq;
     private String guestName;
+    private String cellNumber;
     private String gender;
     @Builder.Default
     private Boolean blockFlag = false;
