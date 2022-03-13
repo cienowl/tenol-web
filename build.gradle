@@ -1,12 +1,13 @@
 plugins {
     id 'org.springframework.boot' version '2.5.9'
     id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+    id 'org.asciidoctor.convert' version '1.5.8'
     id 'java'
 }
 
 group = 'club.tennis'
-version = '0.0.1'
-sourceCompatibility = '11'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '17'
 
 configurations {
     compileOnly {
@@ -16,6 +17,10 @@ configurations {
 
 repositories {
     mavenCentral()
+}
+
+ext {
+    set('snippetsDir', file("build/generated-snippets"))
 }
 
 dependencies {
@@ -28,7 +33,7 @@ dependencies {
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
 
 //    springDoc
-    implementation 'org.springdoc:springdoc-openapi-ui:1.6.3'
+    implementation 'org.springdoc:springdoc-openapi-ui:1.6.6'
 
 //    Database
     runtimeOnly 'org.mariadb.jdbc:mariadb-java-client:2.7.4'
@@ -51,7 +56,12 @@ dependencies {
     annotationProcessor 'jakarta.annotation:jakarta.annotation-api:1.3.5'
 }
 
-test {
+bootJar {
+    destinationDirectory = file("./target")
+}
+
+tasks.named('test') {
+    outputs.dir snippetsDir
     useJUnitPlatform()
 }
 
